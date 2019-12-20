@@ -4,3 +4,4 @@ scikit_learn-0.22
 pip3  install scikit-learn  -i https://pypi.tuna.tsinghua.edu.cn/simple
 keras-2.3.1
 pip3  install keras -i https://pypi.tuna.tsinghua.edu.cn/simple
+tensorflow-1.14
