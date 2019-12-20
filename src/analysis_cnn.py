@@ -4,7 +4,6 @@
 import warnings
 import numpy as np
 import time
-from f1score import *
 
 warnings.filterwarnings('ignore')
 STRAT_TIME = time.time()
@@ -80,7 +79,7 @@ model.add(Embedding(len(word_index) + 1, EMBEDDING_DIM, input_length=MAX_SEQUENC
 model.add(Dropout(0.2))
 #100*200
 #Conv1D(filters, kernel_size, strides=1, padding='valid', dilation_rate=1, activation=None)
-model.add(Conv1D(256, 3, padding='valid', activation='relu', strides=1))
+model.add(Conv1D(250, 3, padding='valid', activation='relu', strides=1))
 
 model.add(MaxPooling1D(3))
 #将输入展平
@@ -93,9 +92,9 @@ model.summary()
 rmsprop = optimizers.RMSprop(lr=0.0001, rho=0.9, epsilon=1e-06)
 model.compile(loss='categorical_crossentropy',
               optimizer=rmsprop,
-              metrics=['acc',f1])
+              metrics=['acc'])
 print( model.metrics_names)
-model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=20, batch_size=128)
-
+model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=50, batch_size=128)
+model.save('cnn-rmsprop.h5')
 print( '(6) testing model...')
 print( model.evaluate(x_test, y_test))
