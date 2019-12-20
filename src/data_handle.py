@@ -3,6 +3,7 @@
 def data_handle(str_temp):
     len_str = len(str_temp)
     result = ""
+    score_temp = ""
     while(str_temp[0] == "("):
         end_rank = 0
         while(end_rank < len(str_temp)):
@@ -20,8 +21,10 @@ def data_handle(str_temp):
             if(str_temp[kongge_rank] == " "):
                 break
         # print(str_temp[kongge_rank+1:end_rank],str_temp[start_rank+1:kongge_rank])
+        score_temp = str_temp[start_rank+1:kongge_rank]
         str_temp = str_temp[:start_rank]+str_temp[kongge_rank+1:end_rank]+str_temp[end_rank+1:]
-    print(str_temp)
+        
+    print(str_temp,score_temp)
 
 input_path = "../data/trees/test.txt"
 f_input=open(input_path,'r',encoding = 'utf-8')
