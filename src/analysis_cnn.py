@@ -20,13 +20,13 @@ train_label_list = []
 train_content_list = []
 test_label_list = []
 test_content_list = []
-with open('../data/train.txt', encoding='utf8') as file:
+with open('../data/train_tag.txt', encoding='utf8') as file:
     line_list = [k.strip() for k in file.readlines()] #类型 文本
     train_label_list = [k.split('\t')[1] for k in line_list]  #类型
     train_content_list = [k.split('\t')[0]for k in line_list]
     # sentences = [s.split() for s in train_content_list]
 
-with open('../data/test.txt', encoding='utf8') as file:
+with open('../data/test_tag.txt', encoding='utf8') as file:
     line_list = [k.strip() for k in file.readlines()] #类型 文本
     test_label_list = [k.split('\t')[1] for k in line_list]  #类型
     test_content_list = [k.split('\t')[0]for k in line_list]
